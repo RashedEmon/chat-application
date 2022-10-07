@@ -1,0 +1,13 @@
+.title{
+    height: 5%;
+    background-color: aquamarine;
+}
+.msg-body{
+    height: 85%;
+    background-color:aqua;
+    overflow:auto;
+
+}
+.msg-input{
+    height:10%;
+}
