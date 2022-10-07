@@ -8,11 +8,11 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static "client/css/chat/style.css" %}">
+    <link rel="stylesheet" href="{% static 'client/css/chat/style.css' %}">
     <title>Meeting</title>
   </head>
   <body>
-    <div class="container vh-100">
+    <div class="container" style="height:500px">
 
         <!-- title -->
         <div class="row bg-info title">
@@ -24,7 +24,7 @@
         <!-- title -->
 
         <!-- msg body -->
-        <div class="row bg-success msg-body">
+        <div class="row bg-success msg-body" style="height:80vh;overflow-y: scroll;">
             <div class="col-12">
 
 
@@ -83,7 +83,7 @@
             <form class="row msg-input" method="POST" action="/">
                 {% csrf_token %}
                 <div class="col-10 p-0 gr-3" style=" height:100%">
-                    <textarea class="form-control w-100 h-100" id="msg" name="message"></textarea>
+                    <textarea class="form-control w-100 h-100" id="msg" name="message" required></textarea>
                 </div>
                 <div class="col-2 d-flex align-items-center">
                     <button type="submit" class="btn btn-primary w-100">Send</button>
