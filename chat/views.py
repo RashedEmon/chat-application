@@ -9,8 +9,11 @@ from .forms import LoginForm
 @require_http_methods(["GET"])
 def index(request):
     print(request.user)
-    login_form=LoginForm().as_table()
-    return render(request,"login.htm",{"form": login_form})
+    if request.user == "AnonymousUser":
+        login_form=LoginForm().as_table()
+        return render(request,"login.htm",{"form": login_form})
+    else:
+        return render(request,"chat.htm")
 
 
 
