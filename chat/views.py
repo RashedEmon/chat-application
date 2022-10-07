@@ -1,35 +1,49 @@
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.models import User
-
+from django.contrib.auth import authenticate,login,logout
 from .forms import LoginForm
 
 # Create your views here.
 @require_http_methods(["GET"])
 def index(request):
-    print(request.user)
-    if request.user == "AnonymousUser":
+    if not request.user.is_authenticated:
         login_form=LoginForm().as_table()
         return render(request,"login.htm",{"form": login_form})
-    else:
-        return render(request,"chat.htm")
+    
+    return render(request,"chat.htm")
 
 
 
 
 @require_http_methods(["GET","POST"])
-def login(request):
-    print(request.session)
+def login_view(request):
+    if request.user.is_authenticated:
+            return redirect("/")
+
+
     if request.method == "GET":
-        users=User.objects.all()
-        print(users)
-        return HttpResponse("login")
+        login_form=LoginForm().as_table()
+        return render(request,"login.htm",{"form": login_form})
+
 
     if request.method == "POST":
-        username=request.POST["username"]
-        password = request.POST["password"]
-        print(username,password)
-        user=User.objects.filter(username=username)
-        print(user)
-        return redirect('/')
+        form_data=LoginForm(request.POST)
+        
+        if form_data.is_valid():
+            print(form_data.cleaned_data["username"],form_data.cleaned_data["password"])
+            user=authenticate(request,username=form_data.cleaned_data["username"], password=form_data.cleaned_data["password"])
+            if user:
+                # print(user)
+                login(request,user)
+                return redirect("/")
+            else:
+                return HttpResponse("wrong username and password")
+
+
+
+def logout(request):
+    logout(request)
+
+    return render(request,"/login")
