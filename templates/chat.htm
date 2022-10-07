@@ -16,16 +16,36 @@
 
         <!-- title -->
         <div class="row bg-info title">
-            <div class="col-12">
-                <h5 class="py-2">Name</h5>
+            <div class="col-12" style="display: flex; justify-content: space-between;">
+                <h5 class="py-2">{{request.user}}</h5>
+                <h5 class="py-2"><a href="/logout">logout</a></h5>
             </div>
         </div>
         <!-- title -->
-        
+
         <!-- msg body -->
         <div class="row bg-success msg-body">
             <div class="col-12">
-                <!-- person item  -->
+
+
+
+            {% for m in msg %}
+
+                {% if m.msg_from == request.user %}
+                <div class="row py-2">
+                    <div class="col-12">
+                        <div class="d-flex">
+                            <div class="flex-grow-1 me-3 text-end">
+                                <h5>{{m.msg_from}}</h5>
+                                <p>{{m.message}}</p>
+                            </div>
+                            <div class="flex-shrink-0" style="height:64px;width:64px;">
+                              <img style="height:100%;width:100%;" class="rounded-circle" src="https://via.placeholder.com/64" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
                 <div class="row py-2">
                     <div class="col-12">
                         <div class="d-flex">
@@ -33,158 +53,26 @@
                               <img style="height:100%;width:100%;" class="rounded-circle" src="https://via.placeholder.com/64" alt="...">
                             </div>
                             <div class="flex-grow-1 ms-3">
-                                <h5>Name</h5>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere repellat consequatur delectus similique perferendis magni neque natus, voluptates vel velit.</p>
+                                <h5>{{m.msg_from}}</h5>
+                                <p>{{m.message}}</p>
                             </div>
                           </div>
                     </div>
-                    
                 </div>
+                {% endif %}
+                
+            {% endfor %}
+                <!-- person item  another-->
+               
                 <!-- person item end -->
-                <!-- person item  -->
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="d-flex">
-                            <div class="flex-grow-1 me-3 text-end">
-                                <h5>Name</h5>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere repellat consequatur delectus similique perferendis magni neque natus, voluptates vel velit.</p>
-                            </div>
-                            <div class="flex-shrink-0" style="height:64px;width:64px;">
-                              <img style="height:100%;width:100%;" class="rounded-circle" src="https://via.placeholder.com/64" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
+                <!-- person item  own-->
+               
                 <!-- person item end -->
-                <!-- person item  -->
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0" style="height:64px;width:64px;">
-                              <img style="height:100%;width:100%;" class="rounded-circle" src="https://via.placeholder.com/64" alt="...">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h5>Name</h5>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere repellat consequatur delectus similique perferendis magni neque natus, voluptates vel velit.</p>
-                            </div>
-                          </div>
-                    </div>
-                    
-                </div>
-                <!-- person item end -->
-                <!-- person item  -->
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="d-flex">
-                            <div class="flex-grow-1 me-3 text-end">
-                                <h5>Name</h5>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere repellat consequatur delectus similique perferendis magni neque natus, voluptates vel velit.</p>
-                            </div>
-                            <div class="flex-shrink-0" style="height:64px;width:64px;">
-                              <img style="height:100%;width:100%;" class="rounded-circle" src="https://via.placeholder.com/64" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- person item end -->
-                <!-- person item  -->
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0" style="height:64px;width:64px;">
-                              <img style="height:100%;width:100%;" class="rounded-circle" src="https://via.placeholder.com/64" alt="...">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h5>Name</h5>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere repellat consequatur delectus similique perferendis magni neque natus, voluptates vel velit.</p>
-                            </div>
-                          </div>
-                    </div>
-                    
-                </div>
-                <!-- person item end -->
-                <!-- person item  -->
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="d-flex">
-                            <div class="flex-grow-1 me-3 text-end">
-                                <h5>Name</h5>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere repellat consequatur delectus similique perferendis magni neque natus, voluptates vel velit.</p>
-                            </div>
-                            <div class="flex-shrink-0" style="height:64px;width:64px;">
-                              <img style="height:100%;width:100%;" class="rounded-circle" src="https://via.placeholder.com/64" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- person item end -->
-                <!-- person item  -->
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0" style="height:64px;width:64px;">
-                              <img style="height:100%;width:100%;" class="rounded-circle" src="https://via.placeholder.com/64" alt="...">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h5>Name</h5>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere repellat consequatur delectus similique perferendis magni neque natus, voluptates vel velit.</p>
-                            </div>
-                          </div>
-                    </div>
-                    
-                </div>
-                <!-- person item end -->
-                <!-- person item  -->
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="d-flex">
-                            <div class="flex-grow-1 me-3 text-end">
-                                <h5>Name</h5>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere repellat consequatur delectus similique perferendis magni neque natus, voluptates vel velit.</p>
-                            </div>
-                            <div class="flex-shrink-0" style="height:64px;width:64px;">
-                              <img style="height:100%;width:100%;" class="rounded-circle" src="https://via.placeholder.com/64" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- person item end -->
-                <!-- person item  -->
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0" style="height:64px;width:64px;">
-                              <img style="height:100%;width:100%;" class="rounded-circle" src="https://via.placeholder.com/64" alt="...">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <h5>Name</h5>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere repellat consequatur delectus similique perferendis magni neque natus, voluptates vel velit.</p>
-                            </div>
-                          </div>
-                    </div>
-                    
-                </div>
-                <!-- person item end -->
-                <!-- person item  -->
-                <div class="row py-2">
-                    <div class="col-12">
-                        <div class="d-flex">
-                            <div class="flex-grow-1 me-3 text-end">
-                                <h5>Name</h5>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere repellat consequatur delectus similique perferendis magni neque natus, voluptates vel velit.</p>
-                            </div>
-                            <div class="flex-shrink-0" style="height:64px;width:64px;">
-                              <img style="height:100%;width:100%;" class="rounded-circle" src="https://via.placeholder.com/64" alt="...">
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- person item end -->
+                
+               
+               
+               
+               
                 
             </div>
 
@@ -192,14 +80,15 @@
         <!-- msg body -->
 
         <!-- msg input area -->
-            <div class="row msg-input">
+            <form class="row msg-input" method="POST" action="/">
+                {% csrf_token %}
                 <div class="col-10 p-0 gr-3" style=" height:100%">
-                    <textarea class="form-control w-100 h-100" id="msg"></textarea>
+                    <textarea class="form-control w-100 h-100" id="msg" name="message"></textarea>
                 </div>
                 <div class="col-2 d-flex align-items-center">
                     <button type="submit" class="btn btn-primary w-100">Send</button>
                 </div>
-            </div>
+            </form>
         <!-- msg input area -->
     </div>
     
